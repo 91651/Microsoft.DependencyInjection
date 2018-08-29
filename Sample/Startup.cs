@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using F.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DependencyInjection.Extensions\Microsoft.DependencyInjection.Extensions.csproj" />
+    <ProjectReference Include="..\F.DependencyInjection.Extensions\F.DependencyInjection.Extensions.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
