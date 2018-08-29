@@ -47,7 +47,7 @@ namespace F.DependencyInjection.Extensions
 
         private static Type[] GetClass(Type[] types)
         {
-            var injectionClass = types.Where(c => c.IsClass && c.IsPublic && !c.IsSealed).ToArray();
+            var injectionClass = types.Where(c => c.IsClass && c.IsPublic && !c.IsSealed && !c.IsGenericType).ToArray();
             return injectionClass;
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Services
 {
-    public static class Test
+    public class Test<T>
     {
     }
 }
