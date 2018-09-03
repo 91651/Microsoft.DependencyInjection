@@ -1,6 +1,6 @@
 ﻿namespace Services
 {
-    public class User : IUser
+    public class User
     {
         public string[] GetAllUser()
         {
