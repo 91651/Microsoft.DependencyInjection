@@ -36,6 +36,21 @@ namespace F.DependencyInjection.Extensions
             }
             AddServices(services, assembly, ServiceLifetime.Transient);
         }
+        public static void AddTransientScan<TService>(
+            this IServiceCollection services)
+             where TService : class
+        {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (typeof(TService) == null)
+            {
+                throw new ArgumentNullException(nameof(TService));
+            }
+            AddServices(services, typeof(TService), ServiceLifetime.Transient);
+        }
         public static void AddScopedScan(
             this IServiceCollection services,
             Type serviceType)
@@ -66,6 +81,21 @@ namespace F.DependencyInjection.Extensions
             }
             AddServices(services, assembly, ServiceLifetime.Scoped);
         }
+        public static void AddScopedScan<TService>(
+            this IServiceCollection services)
+            where TService : class
+        {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (typeof(TService) == null)
+            {
+                throw new ArgumentNullException(nameof(TService));
+            }
+            AddServices(services, typeof(TService), ServiceLifetime.Scoped);
+        }
         public static void AddSingletonScan(
             this IServiceCollection services,
             Type serviceType)
@@ -95,6 +125,21 @@ namespace F.DependencyInjection.Extensions
                 throw new ArgumentNullException(assembly);
             }
             AddServices(services, assembly, ServiceLifetime.Singleton);
+        }
+        public static void AddSingletonScan<TService>(
+            this IServiceCollection services)
+            where TService : class
+        {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (typeof(TService) == null)
+            {
+                throw new ArgumentNullException(nameof(TService));
+            }
+            AddServices(services, typeof(TService), ServiceLifetime.Singleton);
         }
 
         private static void AddServices(
