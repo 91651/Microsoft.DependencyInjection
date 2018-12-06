@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -103,8 +102,7 @@ namespace F.DependencyInjection.Extensions
             Type type,
             ServiceLifetime lifetime)
         {
-            var assembly = type.Assembly;
-            var types = ServiceProvider.AssemblyScan(assembly);
+            var types = ServiceProvider.AssemblyScan(type.Assembly);
             AddServices(services, types, lifetime);
         }
         private static void AddServices(
@@ -112,8 +110,7 @@ namespace F.DependencyInjection.Extensions
             string assembly,
             ServiceLifetime lifetime)
         {
-            var _assembly = Assembly.Load(assembly);
-            var types = ServiceProvider.AssemblyScan(_assembly);
+            var types = ServiceProvider.AssemblyScan(Assembly.Load(assembly));
             AddServices(services, types, lifetime);
         }
         private static void AddServices(
@@ -123,17 +120,11 @@ namespace F.DependencyInjection.Extensions
         {
             foreach (var type in types)
             {
+                Add(services, type, type, lifetime);
                 var interfaces = type.GetInterfaces();
-                if (interfaces.Any())
+                foreach (var _interface in interfaces)
                 {
-                    foreach (var _interface in interfaces)
-                    {
-                        Add(services, _interface, type, lifetime);
-                    }
-                }
-                else
-                {
-                    Add(services, type, type, lifetime);
+                    Add(services, _interface, type, lifetime);
                 }
             }
         }
