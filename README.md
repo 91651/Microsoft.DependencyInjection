@@ -7,7 +7,7 @@ This package is mainly increased `Microsoft.Extensions.DependencyInjection`. Sim
 
 ## Usage
 
-#### 1. Inject all types from the assembly
+#### 1. Inject all types from the Type's assembly
 
 ```
 services.AddScopedFromAssembly<Type>();
@@ -18,7 +18,7 @@ services.AddTransientFromAssembly<Type>();
 
 ```
 
-#### 2. Inject all types from the assembly
+#### 2. Inject all types from the Type's assembly
 
 ```
 services.AddScopedFromAssembly(typeof(Type));
@@ -28,7 +28,7 @@ services.AddSingletonFromAssembly(typeof(Type));
 services.AddTransientFromAssembly(typeof(Type));
 ```
 
-#### 3. Inject all types from the assembly
+#### 3. Inject all types from the prescribed assembly
 
 ```
 services.AddScopedFromAssembly("assembly");
@@ -38,7 +38,7 @@ services.AddSingletonFromAssembly("assembly");
 services.AddTransientFromAssembly("assembly");
 ```
 
-#### 3. Inject all types from the assembly
+#### 4. Inject all types from the matching assembly
 
 ```
 services.AddScopedFromAssembly(nameof(Assembly), o => o.Matching = true);
