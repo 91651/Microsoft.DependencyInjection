@@ -227,7 +227,8 @@ namespace F.DependencyInjection.Extensions
                 var assemblies = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, $"*{assembly}*.dll");
                 foreach (var item in assemblies)
                 {
-                    var itemTypes = ServiceProvider.AssemblyScan(Assembly.Load(item));
+                    var assemblyName = Path.GetFileNameWithoutExtension(item);
+                    var itemTypes = ServiceProvider.AssemblyScan(Assembly.Load(assemblyName));
                     AddServices(services, itemTypes, lifetime);
                 }
                 return;
